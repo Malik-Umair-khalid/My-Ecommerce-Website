@@ -1,0 +1,54 @@
+.myrow {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  /* background-color: antiquewhite */
+  justify-content: space-around;
+}
+.mycol2 {
+  flex-basis: 50%;
+  min-width: 300px;
+}
+.mycol2 img {
+  max-width: 100%;
+  padding: 50px 0;
+}
+.mycol2 h1 {
+  font-size: 50px;
+  line-height: 60px;
+  margin: 25px 0;
+}
+.mycontainer {
+  max-width: 1300px;
+  margin: auto;
+  padding-left: 25px;
+  padding-right: 20px;
+}
+
+.myHeader {
+  background: radial-gradient(#fff, #ffd6d6);
+  height: 100vh;
+}
+.catagories {
+  margin: 70px 0;
+}
+.mycol3 {
+  flex-basis: 30%;
+  min-width: 250px;
+  margin-bottom: 30px;
+}
+.mycol3 img {
+  width: 100%;
+}
+.smallContainer {
+  max-width: 1080px;
+  margin: auto;
+  padding-left: 25px;
+  padding: 25px;
+}
+
+.offer {
+  background: radial-gradient(#fff, #ffd6d6);
+  margin-top: 80px;
+  padding: 30px 0;
+}

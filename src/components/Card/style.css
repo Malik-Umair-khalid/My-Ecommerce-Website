@@ -1,0 +1,22 @@
+.myCard{
+    padding: 10px;
+    min-width: 200px;
+    margin-bottom: 50px;
+    flex-basis: 25%;
+    width: 200px !important;
+    transition: 0.5s;
+}
+.myCard img{
+    width: 100%;
+    margin-bottom: 10px;
+}
+.myCard p {
+    font-size: 14px !important;
+}
+.myCard h4{
+    color: #555;
+    font-weight: normal;
+}
+.myCard:hover{
+    transform: translateY(-5px);
+}
