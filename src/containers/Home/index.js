@@ -26,8 +26,10 @@ import product11 from "../../assets/images/product-11.jpg";
 import product12 from "../../assets/images/product-12.jpg";
 import exc from "../../assets/images/exclusive.png";
 
+
 import MyCard from "../../components/Card";
 import MyHeading from "../../components/MyHeading";
+import Footer from "../../components/Footer";
 function Home() {
   let store = useSelector((state) => state);
   console.log(store);
@@ -38,8 +40,8 @@ function Home() {
   return (
     <>
       <div className="myHeader">
-        <div className="mycontainer">
           <Navbar />
+        <div className="mycontainer">
           <div className="mycontainer">
             <div className="myrow">
               <div className="mycol2">
@@ -114,11 +116,14 @@ function Home() {
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam
                 ipsam tempore at eos. Molestias laboriosam{" "}
               </p>
-              <Button title="Buy Now"/>
+              <Button title="Buy Now" />
             </div>
           </div>
         </div>
       </div>
+
+      {/* Footer */}
+      <Footer/>
     </>
   );
 }

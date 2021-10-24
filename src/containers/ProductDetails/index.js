@@ -20,39 +20,48 @@ import product10 from "../../assets/images/product-10.jpg";
 import product11 from "../../assets/images/product-11.jpg";
 import product12 from "../../assets/images/product-12.jpg";
 import exc from "../../assets/images/exclusive.png";
+import galary1 from "../../assets/images/gallery-1.jpg";
 import Footer from "../../components/Footer";
 import MyCard from "../../components/Card";
 import MyHeading from "../../components/MyHeading";
-import "./css/style.css"
+import "./css/style.css";
 
-function Products() {
+function ProductDetails() {
   return (
     <div>
       <Navbar />
-      <div className="smallContainer">
-        <div className="myrow myrow2">
-          <h2>All Products</h2>
-          <select name="" id="">
-            <option value="">Sort by Bags</option>
-            <option value="">Sort by Pants</option>
-            <option value="">Sort by Shirts</option>
-            <option value="">Sort by shoes</option>
-          </select>
+      <div className="smallContainer singleProcduc">
+        <div className="myrow">
+          <div className="mycol2">
+            <img src={galary1} alt="" width="100%" />
+          </div>
+          <div className="mycol2">
+            <p>Home / T Shirt</p>
+            <h1>ASDDAS ASD ASD SAD</h1>
+            <h4>$500</h4>
+            <select name="" id="">
+              <option value="">Select Size</option>
+              <option value="">XXl</option>
+              <option value="">Xl</option>
+              <option value="">XS</option>
+            </select>
+            <input type="number" />
+            <Button title="Add To Cart" />
+            <h3>Product Details</h3>
+            <p>
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eius, ex
+              repellat veniam at sequi ratione ullam quaerat? Officiis unde
+              doloribus, laborum explicabo ipsam porro cupiditate autem, et
+              quasi ad magni.
+            </p>
+          </div>
         </div>
-        <MyHeading title="Featured Products" />
+        <MyHeading title="More Products" />
         <div className="myrow">
           <MyCard title="Red Printed Shirt" price="$500.00" src={product1} />
           <MyCard title="Shoes" price="$600.00" src={product2} />
           <MyCard title="Pamt" price="$700.00" src={product3} />
           <MyCard title="blue Printed Shirt" price="$800.00" src={product4} />
-          <MyCard title="Red Printed Shirt" price="$500.00" src={product5} />
-          <MyCard title="Shoes" price="$600.00" src={product6} />
-          <MyCard title="Pamt" price="$700.00" src={product7} />
-          <MyCard title="blue Printed Shirt" price="$800.00" src={product8} />
-          <MyCard title="Red Printed Shirt" price="$500.00" src={product9} />
-          <MyCard title="Shoes" price="$600.00" src={product10} />
-          <MyCard title="Pamt" price="$700.00" src={product11} />
-          <MyCard title="blue Printed Shirt" price="$800.00" src={product12} />
         </div>
       </div>
       <Footer />
@@ -60,4 +69,4 @@ function Products() {
   );
 }
 
-export default Products;
+export default ProductDetails;

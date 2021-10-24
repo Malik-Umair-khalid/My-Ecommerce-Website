@@ -13,6 +13,8 @@ import Navbar from "../components/NavBar";
 import Context from "../Context";
 import { Provider } from "react-redux";
 import store from "../store";
+import ProductDetails from "../containers/ProductDetails";
+import Cart from "../containers/cart";
 
 // function PrivateRoute({ component: Component, auth, ...rest }) {
 //     return (
@@ -79,6 +81,8 @@ function AppRouter() {
           <Route exact path="/products" component={Products} />
           <Route exact path="/about" component={About} />
           <Route exact path="/contact" component={Contact} />
+          <Route exact path="/productDetails" component={ProductDetails} />
+          <Route exact path="/cart" component={Cart} />
         </Switch>
       </Provider>
     </Router>

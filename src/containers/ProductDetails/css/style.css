@@ -1,0 +1,30 @@
+.singleProcduc{
+    margin-top: 80px;
+}
+.singleProcduc .mycol2 img{
+    padding: 0;
+}
+.singleProcduc .mycol2{
+    padding: 20px;
+}
+.singleProcduc h4{
+    margin: 22px 0;
+    font-size: 22px;
+    font-weight: bold;
+}
+.singleProcduc select{
+    display: block;
+    padding: 10px;
+    margin-top: 20px;
+}
+.singleProcduc input{
+    width: 50px;
+    height: 40px;
+    padding-left: 10px;
+    font-size: 20px;
+    margin-right: 10px;
+    border: 1px solid #ff523b;
+}
+.singleProcduc input:focus{
+    outline: none;
+}
