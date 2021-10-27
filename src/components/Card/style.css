@@ -5,6 +5,7 @@
     flex-basis: 25%;
     width: 200px !important;
     transition: 0.5s;
+    cursor: pointer;
 }
 .myCard img{
     width: 100%;

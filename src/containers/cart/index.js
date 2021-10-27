@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Navbar from "../../components/NavBar";
 import image1 from "../../assets/images/image1.png";
 import Button from "../../components/Button";
+import { useSelector, useDispatch } from "react-redux";
 
 import catagory1 from "../../assets/images/category-1.jpg";
 import catagory2 from "../../assets/images/category-2.jpg";
@@ -28,6 +29,24 @@ import MyHeading from "../../components/MyHeading";
 import "./css/style.css";
 
 function Cart() {
+  let store = useSelector((state) => state);
+  const [quantity, setquantity] = useState();
+  // console.log(store.cartItems);
+  // console.log(typeof quantity);
+  // console.log( JSON.parse(localStorage.getItem("persist:root")))
+  const [price, setprice] = useState()
+  const [totalPrice, settotalPrice] = useState()
+  console.log(totalPrice)
+  console.log(price)
+  useEffect(() => {
+    {store.cartItems.map((v, i) => (
+      
+      setprice(v.quantiny * +v.price.slice(1)),
+      settotalPrice(price + +v.quantiny * +v.price.slice(1))
+    ))}
+  }, [])
+
+
   return (
     <div>
       <Navbar />
@@ -38,7 +57,37 @@ function Cart() {
             <th>Quantity</th>
             <th>SubToal</th>
           </tr>
-          <tr>
+          {store.cartItems.map((v, i) => (
+
+            <tr key={i}>
+              <td>
+                <div className="cartInfo">
+                  <img src={v.src} alt="" />
+                  <div>
+                    <p>{v.name}</p>
+                    <small>{v.price}</small>
+                    <br />
+                    <a href="">Remove</a>
+                  </div>
+                </div>
+              </td>
+              <td>
+                <input
+                  defaultValue={v.quantiny}
+                  onChange={(v) => v.target.value }
+                  type="number"
+                  id="quantity"
+                  disabled
+                />
+              </td>
+              <td>
+                { v.quantiny * +v.price.slice(1) } 
+          {/* {setprice( v.quantiny * +v.price.slice(1))} */}
+     
+              </td>
+            </tr>
+          ))}
+          {/* <tr>
             <td>
               <div className="cartInfo">
                 <img src={buy1} alt="" />
@@ -105,26 +154,26 @@ function Cart() {
               <input type="number" />
             </td>
             <td>Price</td>
-          </tr>
+          </tr> */}
         </table>
 
         <div className="totalPrice">
           <table>
             <tr>
               <td>SubTotal</td>
-              <td>$200.00</td>
+              <td>${totalPrice}</td>
             </tr>
             <tr>
               <td>TAX</td>
-              <td>$200.00</td>
+              <td>-</td>
             </tr>
             <tr>
               <td>Amount</td>
-              <td>$200.00</td>
+              <td>-</td>
             </tr>
             <tr>
               <td>Total</td>
-              <td>$200.00</td>
+              <td>${totalPrice}</td>
             </tr>
           </table>
         </div>

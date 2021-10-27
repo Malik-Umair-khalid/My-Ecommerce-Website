@@ -25,22 +25,100 @@ import product10 from "../../assets/images/product-10.jpg";
 import product11 from "../../assets/images/product-11.jpg";
 import product12 from "../../assets/images/product-12.jpg";
 import exc from "../../assets/images/exclusive.png";
-
-
 import MyCard from "../../components/Card";
 import MyHeading from "../../components/MyHeading";
 import Footer from "../../components/Footer";
+import { useHistory } from "react-router-dom";
+
+let productsDetail = [
+  {
+    name: "Shoes",
+    price: "$800",
+    productImage: product1,
+    featured: "Featured",
+  },
+  {
+    name: "Shoes",
+    price: "$800",
+    productImage: product2,
+    featured: "Featured",
+  },
+  {
+    name: "Shoes",
+    price: "$800",
+    productImage: product3,
+    featured: "Featured",
+  },
+  {
+    name: "Shoes",
+    price: "$800",
+    productImage: product4,
+    featured: "Featured",
+  },
+  {
+    name: "Shoes",
+    price: "$800",
+    productImage: product5,
+  },
+  {
+    name: "Shoes",
+    price: "$800",
+    productImage: product6,
+  },
+  {
+    name: "Shoes",
+    price: "$800",
+    productImage: product7,
+  },
+  {
+    name: "Shoes",
+    price: "$800",
+    productImage: product8,
+  },
+  {
+    name: "Shoes",
+    price: "$800",
+    productImage: product9,
+  },
+  {
+    name: "Shoes",
+    price: "$800",
+    productImage: product10,
+  },
+  {
+    name: "Shoes",
+    price: "$800",
+    productImage: product11,
+  },
+  {
+    name: "Shoes",
+    price: "$800",
+    productImage: product12,
+  },
+];
+
 function Home() {
   let store = useSelector((state) => state);
   console.log(store);
   console.log(Context);
   const increment = useDispatch();
-  // let theme = useContext(Context)
-  // console.log(theme)
+  let history = useHistory();
+  // productsDetail.map((v, i) => console.log(v?.featured));
+  const loadSingleProduct = (v, i) => {
+    increment({
+      type: "increment",
+      name: v.name,
+      price: v.price,
+      src: v.productImage,
+      productId: i
+    });
+    history.push("/productDetails");
+    console.log(i)
+  };
   return (
     <>
       <div className="myHeader">
-          <Navbar />
+        <Navbar />
         <div className="mycontainer">
           <div className="mycontainer">
             <div className="myrow">
@@ -86,21 +164,29 @@ function Home() {
       <div className="smallContainer">
         <MyHeading title="Featured Products" />
         <div className="myrow">
-          <MyCard title="Red Printed Shirt" price="$500.00" src={product1} />
-          <MyCard title="Shoes" price="$600.00" src={product2} />
-          <MyCard title="Pamt" price="$700.00" src={product3} />
-          <MyCard title="blue Printed Shirt" price="$800.00" src={product4} />
+          {productsDetail.map((v, i) =>
+            v.featured ? (
+              <MyCard
+                title={v.name}
+                src={v.productImage}
+                price={v.price}
+                onClick={() => loadSingleProduct(v, i)}
+              />
+            ) : null
+          )}
         </div>
         <MyHeading title="Latest Products" />
         <div className="myrow">
-          <MyCard title="Red Printed Shirt" price="$500.00" src={product5} />
-          <MyCard title="Shoes" price="$600.00" src={product6} />
-          <MyCard title="Pamt" price="$700.00" src={product7} />
-          <MyCard title="blue Printed Shirt" price="$800.00" src={product8} />
-          <MyCard title="Red Printed Shirt" price="$500.00" src={product9} />
-          <MyCard title="Shoes" price="$600.00" src={product10} />
-          <MyCard title="Pamt" price="$700.00" src={product11} />
-          <MyCard title="blue Printed Shirt" price="$800.00" src={product12} />
+          {productsDetail.map((v, i) =>
+            v.featured ? null : (
+              <MyCard
+                title={v.name}
+                src={v.productImage}
+                price={v.price}
+                onClick={() => loadSingleProduct(v,i)}
+              />
+            )
+          )}
         </div>
       </div>
       <div className="offer">
@@ -123,7 +209,7 @@ function Home() {
       </div>
 
       {/* Footer */}
-      <Footer/>
+      <Footer />
     </>
   );
 }

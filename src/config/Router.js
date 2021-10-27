@@ -12,9 +12,11 @@ import Products from "../containers/Products";
 import Navbar from "../components/NavBar";
 import Context from "../Context";
 import { Provider } from "react-redux";
-import store from "../store";
+import store, { persistor } from "../store";
 import ProductDetails from "../containers/ProductDetails";
 import Cart from "../containers/cart";
+import { PersistGate } from "redux-persist/integration/react";
+
 
 // function PrivateRoute({ component: Component, auth, ...rest }) {
 //     return (
@@ -71,12 +73,14 @@ function AppRouter() {
   return (
     <Router>
       <Provider store={store}>
+        <PersistGate persistor={persistor}>
+          
         {/* <Navbar /> */}
         <Switch>
           {/* <PublicRoute auth={isAuth} exact path="/" component={Login} />
                 <PublicRoute auth={isAuth} exact path="/signup" component={Signup} />
                 <PrivateRoute auth={isAuth} exact path="/profile/:id" component={Profile} />
-            <PrivateRoute auth={isAuth} exact path="/chat/:uid" component={Chat} /> */}
+              <PrivateRoute auth={isAuth} exact path="/chat/:uid" component={Chat} /> */}
           <Route exact path="/" component={Home} />
           <Route exact path="/products" component={Products} />
           <Route exact path="/about" component={About} />
@@ -84,6 +88,7 @@ function AppRouter() {
           <Route exact path="/productDetails" component={ProductDetails} />
           <Route exact path="/cart" component={Cart} />
         </Switch>
+              </PersistGate>
       </Provider>
     </Router>
   );

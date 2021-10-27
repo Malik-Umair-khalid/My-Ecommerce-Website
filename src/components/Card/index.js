@@ -3,9 +3,9 @@ import "./style.css";
 import ReactStars from "react-rating-stars-component";
 import { render } from "react-dom";
 
-function MyCard({ title, price, src }) {
+function MyCard({ title, price, src, onClick }) {
   return (
-    <div className="myCard">
+    <div className="myCard" onClick={onClick}>
       <img src={src} alt="" />
       <h4>{title}</h4>
       <ReactStars

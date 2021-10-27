@@ -3,7 +3,8 @@ import { Link } from "react-router-dom";
 import Navbar from "../../components/NavBar";
 import image1 from "../../assets/images/image1.png";
 import Button from "../../components/Button";
-
+import { useSelector, useDispatch } from "react-redux";
+import { useState } from "react";
 import catagory1 from "../../assets/images/category-1.jpg";
 import catagory2 from "../../assets/images/category-2.jpg";
 import catagory3 from "../../assets/images/category-3.jpg";
@@ -24,29 +25,80 @@ import galary1 from "../../assets/images/gallery-1.jpg";
 import Footer from "../../components/Footer";
 import MyCard from "../../components/Card";
 import MyHeading from "../../components/MyHeading";
+import { useEffect, useRef } from "react";
+import Swal from "sweetalert2";
 import "./css/style.css";
 
 function ProductDetails() {
+  const [addedToCart, setaddedToCart] = useState(true);
+  const [alreadyAdded, setalreadyAdded] = useState(true);
+  let store = useSelector((state) => state);
+  // const [quantity, setquantity] = useState("1")
+  const quantiny = useRef(null);
+  const size = useRef(null);
+  console.log(store);
+  // console.log(alreadyAdded);
+  // console.log(store.productId);
+  useEffect(() => {
+    store.cartItems.map((v) =>
+      v.productId == store.productId ? setalreadyAdded(false) : null
+    );
+  }, []);
+
+  const addtoRedux = useDispatch();
+  const addToCart = () => {
+    if (size.current.value == "") {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Please Select Size"
+      });
+    } else {
+      addtoRedux({
+        type: "addtoCart",
+        name: store.name,
+        price: store.price,
+        src: store.src,
+        productId: store.productId,
+        quantiny: quantiny.current.value,
+        size: size.current.value,
+      });
+      setaddedToCart(false);
+    }
+
+    console.log();
+  };
   return (
     <div>
       <Navbar />
       <div className="smallContainer singleProcduc">
         <div className="myrow">
           <div className="mycol2">
-            <img src={galary1} alt="" width="100%" />
+            <img src={store.src} alt="" width="100%" />
           </div>
           <div className="mycol2">
             <p>Home / T Shirt</p>
-            <h1>ASDDAS ASD ASD SAD</h1>
-            <h4>$500</h4>
-            <select name="" id="">
+            <h1>{store.name}</h1>
+            <h4>{store.price}</h4>
+            <select name="" id="size" ref={size}>
               <option value="">Select Size</option>
-              <option value="">XXl</option>
-              <option value="">Xl</option>
-              <option value="">XS</option>
+              <option value="XXl">XXl</option>
+              <option value="Xl">Xl</option>
+              <option value="XS">XS</option>
             </select>
-            <input type="number" />
-            <Button title="Add To Cart" />
+            <input
+              defaultValue="1"
+              type="number"
+              id="quantiny"
+              ref={quantiny}
+            />
+            <Button
+              title={
+                addedToCart ? (alreadyAdded ? "Add To Cart" : "Added") : "Added"
+              }
+              disabled={addedToCart ? (alreadyAdded ? false : true) : true}
+              onClick={() => addToCart()}
+            />
             <h3>Product Details</h3>
             <p>
               Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eius, ex
